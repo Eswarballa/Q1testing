@@ -88,26 +88,29 @@ def multiply_sparse(N, M, P, A, B):
 def main():
     N = M = P = 10001
     nnz_limit = 100000  # 1e5 non-zeros
+    num_cases = 5
 
-    with open("sparse_testcase_large.txt", "w") as f:
-        f.write("1\n")  # number of test cases
-        f.write("# --- Test Case 1 ---\n")
-        f.write("Input:\n")
+    with open("sparse_testcases_maxsize.txt", "w") as f:
+        f.write(f"{num_cases}\n")  # number of test cases
 
-        # Generate matrices
-        A = generate_sparse_matrix(N, M, nnz_limit)
-        B = generate_sparse_matrix(M, P, nnz_limit)
+        for t in range(1, num_cases + 1):
+            f.write(f"# --- Test Case {t} ---\n")
+            f.write("Input:\n")
 
-        f.write(f"{N} {M} {P}\n")
-        for row in A:
-            f.write(row + "\n")
-        for row in B:
-            f.write(row + "\n")
+            A = generate_sparse_matrix(N, M, nnz_limit)
+            B = generate_sparse_matrix(M, P, nnz_limit)
 
-        f.write("Output:\n")
-        C = multiply_sparse(N, M, P, A, B)
-        for row in C:
-            f.write(row + "\n")
+            f.write(f"{N} {M} {P}\n")
+            for row in A:
+                f.write(row + "\n")
+            for row in B:
+                f.write(row + "\n")
+
+            f.write("Output:\n")
+            C = multiply_sparse(N, M, P, A, B)
+            for row in C:
+                f.write(row + "\n")
+            f.write("\n")  # blank line after each case
 
 
 if __name__ == "__main__":
