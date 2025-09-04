@@ -128,7 +128,7 @@ def run_mpi_command(np_count, input_text, timeout=60):
 def main():
     # Configuration
     input_file = 'sparse_testcases.txt'
-    output_file = 'mpi_performance_results.csv'
+    output_file = 'mpi_performance_results2.csv'
     process_counts = [1, 2, 4, 8, 16, 32]  # Different MPI process counts to test
     # process_counts = [1, 2, 4]
     # Check if Q1 executable exists
